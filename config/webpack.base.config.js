@@ -146,8 +146,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           {
             test: cssRegex,
             exclude: cssModuleRegex,
-            use: [
-              options.cssLoader,
+            use: options.cssLoaders.concat([
               {
                 loader: require.resolve('css-loader'),
                 options: options.cssOptions,
@@ -177,7 +176,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   sourceMap: options.cssSourceMap,
                 },
               },
-            ],
+            ]),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
@@ -188,8 +187,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           // using the extension .module.css
           {
             test: cssModuleRegex,
-            use: [
-              options.cssLoader,
+            use: options.cssLoaders.concat([
               {
                 loader: require.resolve('css-loader'),
                 options: options.cssModuleOptions,
@@ -219,7 +217,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   sourceMap: options.cssSourceMap,
                 },
               },
-            ],
+            ]),
           },
           // Opt-in support for SASS (using .scss or .sass extensions).
           // By default we support SASS Modules with the
@@ -227,8 +225,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           {
             test: sassRegex,
             exclude: sassModuleRegex,
-            use: [
-              options.cssLoader,
+            use: options.cssLoaders.concat([
               {
                 loader: require.resolve('css-loader'),
                 options: options.sassOptions,
@@ -270,7 +267,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   sourceMap: true,
                 },
               },
-            ],
+            ]),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
@@ -281,8 +278,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           // using the extension .module.scss or .module.sass
           {
             test: sassModuleRegex,
-            use: [
-              options.cssLoader,
+            use: options.cssLoaders.concat([
               {
                 loader: require.resolve('css-loader'),
                 options: options.sassModuleOptions,
@@ -324,7 +320,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   sourceMap: true,
                 },
               },
-            ],
+            ]),
           },
 
           // "file" loader makes sure those assets get served by WebpackDevServer.

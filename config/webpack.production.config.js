@@ -73,8 +73,10 @@ module.exports = require('./webpack.base.config')({
       minifyURLs: true,
     },
   },
-  cssLoader: {
-    loader: MiniCssExtractPlugin.loader,
-    options: {},
-  },
+  cssLoaders: [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {},
+    },
+  ],
 });

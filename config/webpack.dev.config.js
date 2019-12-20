@@ -74,5 +74,5 @@ module.exports = baseWebPackFunc({
   sassSourceMap: false,
   cssSourceMap: false,
   HtmlWebpackPluginMinifyOptions: undefined,
-  cssLoader: 'style-loader',
+  cssLoaders: ['style-loader'],
 });
