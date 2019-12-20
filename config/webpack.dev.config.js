@@ -3,12 +3,12 @@
  */
 
 const path = require('path');
-const paths = require('./paths');
 const webpack = require('webpack');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const paths = require('./paths');
 
 const baseWebPackFunc = require('./webpack.base.config');
 
@@ -17,14 +17,13 @@ module.exports = baseWebPackFunc({
   // Add hot reloading in development
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
-    'webpack-hot-middleware/client?reload=true',
-    paths.appIndexJs
+    paths.appIndexJs,
   ],
 
   // Don't use hashes in dev mode for better performance
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].chunk.js'
+    chunkFilename: '[name].chunk.js',
   },
 
   // Add development plugins
@@ -38,8 +37,8 @@ module.exports = baseWebPackFunc({
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
     new CircularDependencyPlugin({
       exclude: /a\.js|node_modules/, // exclude node_modules
-      failOnError: false // show a warning when there is a circular dependency
-    })
+      failOnError: false, // show a warning when there is a circular dependency
+    }),
   ],
 
   // Emit a source map for easier debugging
@@ -47,32 +46,32 @@ module.exports = baseWebPackFunc({
   devtool: 'eval-source-map',
 
   performance: {
-    hints: false
+    hints: false,
   },
   optimization: {
-    minimize: false
+    minimize: false,
   },
   cssOptions: {
-    importLoaders: 1,// No of loaders before css-loder
+    importLoaders: 1, // No of loaders before css-loder
     sourceMap: false,
   },
-  cssModuleOptions: { 
-    importLoaders: 1,// No of loaders before css-loder
+  cssModuleOptions: {
+    importLoaders: 1, // No of loaders before css-loder
     sourceMap: false,
     modules: true,
-    getLocalIdent: getCSSModuleLocalIdent,//ou can also specify the absolute path to your custom getLocalIdent function to generate classname based on a different schema. By default we use built-in function to generate a classname.
+    getLocalIdent: getCSSModuleLocalIdent, // ou can also specify the absolute path to your custom getLocalIdent function to generate classname based on a different schema. By default we use built-in function to generate a classname.
   },
   sassOptions: {
-    importLoaders: 2,// No of loaders before css-loder
+    importLoaders: 2, // No of loaders before css-loder
     sourceMap: false,
   },
   sassModuleOptions: {
-    importLoaders: 2,// No of loaders before css-loder
+    importLoaders: 2, // No of loaders before css-loder
     sourceMap: false,
     modules: true,
-    getLocalIdent: getCSSModuleLocalIdent,//ou can also specify the absolute path to your custom getLocalIdent function to generate classname based on a different schema. By default we use built-in function to generate a classname.
+    getLocalIdent: getCSSModuleLocalIdent, // ou can also specify the absolute path to your custom getLocalIdent function to generate classname based on a different schema. By default we use built-in function to generate a classname.
   },
   sassSourceMap: false,
   cssSourceMap: false,
-  HtmlWebpackPluginMinifyOptions: undefined
+  HtmlWebpackPluginMinifyOptions: undefined,
 });
