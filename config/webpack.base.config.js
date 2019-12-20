@@ -147,6 +147,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
             test: cssRegex,
             exclude: cssModuleRegex,
             use: [
+              options.cssLoader,
               {
                 loader: require.resolve('css-loader'),
                 options: options.cssOptions,
@@ -161,7 +162,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   // https://github.com/facebook/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
-                    PostcssFlexbugsFixes,
+                    PostcssFlexbugsFixes(),
                     PostcssPresetEnv({
                       autoprefixer: {
                         flexbox: 'no-2009',
@@ -188,6 +189,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           {
             test: cssModuleRegex,
             use: [
+              options.cssLoader,
               {
                 loader: require.resolve('css-loader'),
                 options: options.cssModuleOptions,
@@ -202,7 +204,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   // https://github.com/facebook/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
-                    PostcssFlexbugsFixes,
+                    PostcssFlexbugsFixes(),
                     PostcssPresetEnv({
                       autoprefixer: {
                         flexbox: 'no-2009',
@@ -226,6 +228,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
             test: sassRegex,
             exclude: sassModuleRegex,
             use: [
+              options.cssLoader,
               {
                 loader: require.resolve('css-loader'),
                 options: options.sassOptions,
@@ -240,7 +243,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   // https://github.com/facebook/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
-                    PostcssFlexbugsFixes,
+                    PostcssFlexbugsFixes(),
                     PostcssPresetEnv({
                       autoprefixer: {
                         flexbox: 'no-2009',
@@ -279,6 +282,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           {
             test: sassModuleRegex,
             use: [
+              options.cssLoader,
               {
                 loader: require.resolve('css-loader'),
                 options: options.sassModuleOptions,
@@ -293,7 +297,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
                   // https://github.com/facebook/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
-                    PostcssFlexbugsFixes,
+                    PostcssFlexbugsFixes(),
                     PostcssPresetEnv({
                       autoprefixer: {
                         flexbox: 'no-2009',
