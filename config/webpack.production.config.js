@@ -3,6 +3,8 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 // const webpack = require('webpack')
 
@@ -11,15 +13,16 @@ module.exports = require('./webpack.base.config')({
   // In production, we skip all hot-reloading stuff
   entry: {
     main: paths.appIndexJs,
-    polyfills: paths.appPolyfillJs,
+    // polyfills: paths.appPolyfillJs,
   },
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
-    filename: '[name].[chunkhash].min.js',
-    chunkFilename: '[name].[chunkhash].chunk.min.js',
+    filename: '[name].[contenthash:8].min.js',
+    chunkFilename: '[name].[contenthash:8].chunk.min.js',
   },
 
   plugins: [
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
     new MinifyPlugin({}, { comments: false }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
@@ -33,7 +36,7 @@ module.exports = require('./webpack.base.config')({
   },
   // Emit a source map for easier debugging
   // See https://webpack.js.org/configuration/devtool/#devtool
-  devtool: 'hidden-source-map', // 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map', // 'cheap-module-source-map',
   optimization: {
     minimize: true,
   },
