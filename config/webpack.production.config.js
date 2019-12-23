@@ -5,6 +5,8 @@ const MinifyPlugin = require('babel-minify-webpack-plugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const paths = require('./paths');
 // const webpack = require('webpack')
 
@@ -13,7 +15,7 @@ module.exports = require('./webpack.base.config')({
   // In production, we skip all hot-reloading stuff
   entry: {
     main: paths.appIndexJs,
-    // polyfills: paths.appPolyfillJs,
+    polyfills: paths.appPolyfillJs,
   },
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -28,6 +30,22 @@ module.exports = require('./webpack.base.config')({
       filename: '[name].[contenthash:8].css',
       chunkFilename: '[name].[contenthash:8].chunk.css',
     }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      clientsClaim: true,
+      exclude: [/\.map$/, /asset-manifest\.json$/],
+      importWorkboxFrom: 'cdn',
+      navigateFallback: '/index.html',
+      navigateFallbackBlacklist: [
+        // Exclude URLs starting with /_, as they're likely an API call
+        new RegExp('^/_'),
+        // Exclude any URLs whose last part seems to be a file extension
+        // as they're likely a resource and not a SPA route.
+        // URLs containing a "?" character won't be blacklisted as they're likely
+        // a route with query params (e.g. auth callbacks).
+        new RegExp('/[^/?]+\\.[^/]+$'),
+      ],
+    }),
+    new RobotstxtPlugin(),
   ],
 
   performance: {
