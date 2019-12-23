@@ -82,4 +82,9 @@ module.exports = require('./webpack.base.config')({
       options: {},
     },
   ],
+  webpackAliases: {
+    // Allows for better profiling with ReactDevTools
+    'react-dom$': 'react-dom/profiling',
+    'scheduler/tracing': 'scheduler/tracing-profiling',
+  },
 });

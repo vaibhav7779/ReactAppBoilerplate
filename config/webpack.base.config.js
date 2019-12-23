@@ -396,6 +396,12 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
     modules: [paths.appSrc, 'node_modules'],
     extensions: ['.js', '.jsx', '.scss', '.react.js'],
     mainFields: ['browser', 'module', 'main'],
+    alias: {
+      // Support React Native Web
+      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+      'react-native': 'react-native-web',
+      ...(options.webpackAliases || {}),
+    },
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
