@@ -42,9 +42,10 @@
     "navigator": true
   },
   "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "./config/webpack.config.resolve.js"
+    "import/resolver" : {
+      "alias" : {
+        "map" : [],
+        "extensions": [".js", ".jsx",  ".scss", ".react.js"],
       }
     }
   },
