@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
+import ApplicationRouter from 'configurations/routing/ApplicationRouter';
 
 class App extends PureComponent {
   render() {
-    return <h1>Hello World from React boilerplate</h1>;
+    return <ApplicationRouter />;
   }
 }
 
