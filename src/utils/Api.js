@@ -26,7 +26,7 @@ class Api {
   }
 
   static requestInterceptor = config => {
-    const request = this.SecureRequest.getSecureAuthRequest(config);
+    const request = Api.SecureRequest.getSecureAuthRequest(config);
     return request;
   };
 
@@ -35,7 +35,7 @@ class Api {
   };
 
   static responseInterceptor = response => {
-    const newResponse = this.SecureRequest.getResponse(response);
+    const newResponse = Api.SecureRequest.getResponse(response);
     return newResponse;
   };
 
