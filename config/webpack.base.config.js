@@ -403,6 +403,8 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
       'react-native': 'react-native-web',
       configurations: path.resolve(__dirname, '../src/configurations'),
       utils: path.resolve(__dirname, '../src/utils'),
+      components: path.resolve(__dirname, '../src/components'),
+      globals: path.resolve(__dirname, '../src/globals'),
     },
   },
   devtool: options.devtool,

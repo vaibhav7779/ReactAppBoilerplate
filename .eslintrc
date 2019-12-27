@@ -47,6 +47,8 @@
         "map" : [
           ["configurations", "./src/configurations"],
           ["utils", "./src/utils"],
+          ["components", "./src/components"],
+          ["globals", "./src/globals"],
         ],
         "extensions": [".js", ".jsx",  ".scss", ".react.js"],
       }
