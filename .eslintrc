@@ -44,7 +44,10 @@
   "settings": {
     "import/resolver" : {
       "alias" : {
-        "map" : [],
+        "map" : [
+          ["configurations", "./src/configurations"],
+          ["utils", "./src/utils"],
+        ],
         "extensions": [".js", ".jsx",  ".scss", ".react.js"],
       }
     }
