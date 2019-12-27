@@ -14,6 +14,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 const PostcssPresetEnv = require('postcss-preset-env');
+const path = require('path');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -400,6 +401,10 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      configurations: path.resolve(__dirname, '../src/configurations'),
+      utils: path.resolve(__dirname, '../src/utils'),
+      components: path.resolve(__dirname, '../src/components'),
+      globals: path.resolve(__dirname, '../src/globals'),
     },
   },
   devtool: options.devtool,
