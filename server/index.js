@@ -48,6 +48,7 @@ checkBrowsers(paths.appPath, isInteractive)
     const urls = prepareUrls(protocol, prettyHost, port);
     // Start your app.
     app.listen(port, host, err => {
+      app.keepAliveTimeout = 0;
       if (err) {
         return logger.error(err.message);
       }
