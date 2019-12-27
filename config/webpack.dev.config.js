@@ -17,6 +17,7 @@ module.exports = baseWebPackFunc({
   // Add hot reloading in development
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
+    'webpack-hot-middleware/client?reload=true',
     paths.appIndexJs,
   ],
 
