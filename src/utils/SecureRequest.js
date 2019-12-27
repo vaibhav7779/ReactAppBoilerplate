@@ -8,10 +8,12 @@ const SecureRequest = () => {
   };
 
   const storeAccessToken = response => {
-    tokenData = {
-      // Replace with the key
-      [requestTokenKey]: response.headers[responseTokenKey],
-    };
+    if (response && response.headers) {
+      tokenData = {
+        // Replace with the key
+        [requestTokenKey]: response.headers[responseTokenKey],
+      };
+    }
   };
 
   const getSecureAuthRequest = unsecuredRequest => {
