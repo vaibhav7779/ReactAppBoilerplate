@@ -41,5 +41,8 @@
     "Blob": true,
     "navigator": true
   },
+  "settings": {
+    "alias": true
+  },
   "parser": "babel-eslint"
 }

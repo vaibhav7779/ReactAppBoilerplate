@@ -16,6 +16,7 @@ const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 const PostcssPresetEnv = require('postcss-preset-env');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const resolve = require('./webpack.config.resolve');
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000',
@@ -392,17 +393,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
       },
     }),
   ],
-  resolve: {
-    modules: [paths.appSrc, 'node_modules'],
-    extensions: ['.js', '.jsx', '.scss', '.react.js'],
-    mainFields: ['browser', 'module', 'main'],
-    alias: {
-      // Support React Native Web
-      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web',
-      ...(options.webpackAliases || {}),
-    },
-  },
+  resolve: resolve(options.webpackAliases),
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},
