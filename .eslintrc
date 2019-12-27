@@ -42,7 +42,11 @@
     "navigator": true
   },
   "settings": {
-    "alias": true
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.config.resolve.js"
+      }
+    }
   },
   "parser": "babel-eslint"
 }

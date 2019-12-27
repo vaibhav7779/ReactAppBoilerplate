@@ -393,7 +393,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
       },
     }),
   ],
-  resolve: resolve(options.webpackAliases),
+  resolve,
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},

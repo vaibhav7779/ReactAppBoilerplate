@@ -1,10 +1,9 @@
-const path = require('path');
 const paths = require('./paths');
 
 /**
  * Determine the array of extensions that should be used to resolve modules.
  */
-module.exports = webpackAliases => ({
+module.exports = {
   modules: [paths.appSrc, 'node_modules'],
   extensions: ['.js', '.jsx', '.scss', '.react.js'],
   mainFields: ['browser', 'module', 'main'],
@@ -12,6 +11,5 @@ module.exports = webpackAliases => ({
     // Support React Native Web
     // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
     'react-native': 'react-native-web',
-    ...(webpackAliases || {}),
   },
-});
+};
