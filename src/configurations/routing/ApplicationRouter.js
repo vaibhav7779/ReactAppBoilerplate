@@ -1,7 +1,7 @@
 import {
-  appRoutes,
   defaultAuthenticatedRoute,
   defaultUnauthenticatedRoute,
+  getAllRoutesArray,
 } from 'configurations/routing/AppNavigation';
 import isAuthenticated from 'utils/global';
 import React, { Suspense } from 'react';
@@ -11,22 +11,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
-const LoginContainer = React.lazy(() =>
-  import('components/Login/Login.Container'),
-);
-
-const ApplicationRouter = () => (
-  <Router>
-    <Suspense fallback={null}>
-      <Switch>
-        <UnauthenticatedRoute path={appRoutes.authentication.login}>
-          <LoginContainer />
-        </UnauthenticatedRoute>
-      </Switch>
-    </Suspense>
-  </Router>
-);
 
 const AuthenticatedRoute = ({ children, ...rest }) => (
   <Route
@@ -62,6 +46,29 @@ const UnauthenticatedRoute = ({ children, ...rest }) => (
       );
     }}
   />
+);
+
+const allappRoutes = getAllRoutesArray();
+console.log(allappRoutes);
+const routes = allappRoutes.map((route, index) => {
+  console.log(index, route);
+  return route.needAuth ? (
+    <AuthenticatedRoute path={route.path} component={route.component} />
+  ) : (
+    <UnauthenticatedRoute path={route.path} component={route.component} />
+  );
+});
+
+console.log('routes', routes);
+
+const ApplicationRouter = () => (
+  <Router>
+    <Suspense fallback={null}>
+      <Switch>
+        <>{routes}</>
+      </Switch>
+    </Suspense>
+  </Router>
 );
 
 export default ApplicationRouter;
