@@ -4,6 +4,7 @@
   "description": "This is a basic boiler plate with routing and redux preconfigured.",
   "main": "index.js",
   "scripts": {
+    "analyze": "npm run build && source-map-explorer 'build/*.js'",
     "prebuild": "npm run build:clean",
     "build": "npm run build:clean && cross-env NODE_ENV=production webpack --config config/webpack.production.config.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
@@ -78,7 +79,7 @@
     "robotstxt-webpack-plugin": "^7.0.0",
     "sass-loader": "^8.0.0",
     "scheduler": "^0.18.0",
-    "source-map-explorer": "^2.1.2",
+    "source-map-explorer": "^2.2.0",
     "style-loader": "^1.1.0",
     "terser-webpack-plugin": "^2.3.1",
     "uglify-js": "^3.7.2",
