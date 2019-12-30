@@ -11,6 +11,8 @@ const persistStorage = localForage;
 
 const isPresistanceRequired = false;
 
+const isDev = process.env.NODE_ENV !== 'development';
+
 const compressor = createCompressor({});
 
 const encryptor = createEncryptor({
@@ -26,7 +28,7 @@ const persistConfig = {
   key: 'ReactApp',
   storage: persistStorage,
   blacklist: [],
-  transforms: [compressor, encryptor],
+  transforms: isDev ? [] : [compressor, encryptor],
 };
 
 const persistedReducer = isPresistanceRequired
@@ -37,12 +39,11 @@ const middlewares = [
   thunk.withExtraArgument(), // Argument can be a request object used inside all calls
 ];
 
-const composeEnhancers =
-  process.env.NODE_ENV === 'production'
-    ? compose
-    : composeWithDevTools({
-        // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-      });
+const composeEnhancers = !isDev
+  ? compose
+  : composeWithDevTools({
+      // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+    });
 
 const store = createStore(
   persistedReducer,
@@ -106,7 +107,7 @@ const persistData = () => {
   });
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (isDev) {
   window.persistor = persistor;
 }
 
