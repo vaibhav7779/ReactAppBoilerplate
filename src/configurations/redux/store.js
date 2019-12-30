@@ -3,17 +3,30 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import localForage from 'localforage';
+import createCompressor from 'redux-persist-transform-compress';
+import createEncryptor from 'redux-persist-transform-encrypt';
 import combinedReducer from './reducers';
 
 const persistStorage = localForage;
 
 const isPresistanceRequired = false;
 
+const compressor = createCompressor({});
+
+const encryptor = createEncryptor({
+  secretKey: 'ReactApp',
+  onError(error) {
+    // Handle the error.
+    console.log('Error while encryption');
+  },
+});
+
 const persistConfig = {
   version: 0,
   key: 'ReactApp',
   storage: persistStorage,
   blacklist: [],
+  transforms: [compressor, encryptor],
 };
 
 const persistedReducer = isPresistanceRequired
