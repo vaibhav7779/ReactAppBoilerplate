@@ -9,15 +9,15 @@ import createEncryptor from 'redux-persist-transform-encrypt';
 import combinedReducer from './reducers';
 
 const persistStorage = localForage;
-const isPresistanceRequired = false;
+const isPresistanceRequired = true;
 const apiInstance = new Api();
-const isDev = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV === 'development';
 const compressor = createCompressor({});
 const encryptor = createEncryptor({
   secretKey: 'ReactApp',
   onError(error) {
     // Handle the error.
-    console.log('Error while encryption');
+    console.log('Error while encryption', error);
   },
 });
 const persistConfig = {
