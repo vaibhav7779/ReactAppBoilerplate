@@ -4,17 +4,28 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import localForage from 'localforage';
 import Api from 'utils/Api';
+import createCompressor from 'redux-persist-transform-compress';
+import createEncryptor from 'redux-persist-transform-encrypt';
 import combinedReducer from './reducers';
 
 const persistStorage = localForage;
 const isPresistanceRequired = false;
 const apiInstance = new Api();
-
+const isDev = process.env.NODE_ENV !== 'development';
+const compressor = createCompressor({});
+const encryptor = createEncryptor({
+  secretKey: 'ReactApp',
+  onError(error) {
+    // Handle the error.
+    console.log('Error while encryption');
+  },
+});
 const persistConfig = {
   version: 0,
   key: 'ReactApp',
   storage: persistStorage,
   blacklist: [],
+  transforms: isDev ? [] : [compressor, encryptor],
 };
 
 const persistedReducer = isPresistanceRequired
@@ -25,12 +36,11 @@ const middlewares = [
   thunk.withExtraArgument({ apiInstance }), // Argument can be a request object used inside all calls
 ];
 
-const composeEnhancers =
-  process.env.NODE_ENV === 'production'
-    ? compose
-    : composeWithDevTools({
-        // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-      });
+const composeEnhancers = !isDev
+  ? compose
+  : composeWithDevTools({
+      // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+    });
 
 const store = createStore(
   persistedReducer,
@@ -94,7 +104,7 @@ const persistData = () => {
   });
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (isDev) {
   window.persistor = persistor;
 }
 
