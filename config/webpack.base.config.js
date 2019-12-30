@@ -15,6 +15,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 const PostcssPresetEnv = require('postcss-preset-env');
 const path = require('path');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -401,6 +402,10 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
           files: manifestFiles,
         };
       },
+    }),
+    new LodashModuleReplacementPlugin({
+      shorthands: true,
+      collections: true,
     }),
   ],
   resolve: {

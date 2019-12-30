@@ -5,5 +5,5 @@
         "react-app",
         "minify"
     ],
-    "plugins": ["@babel/plugin-syntax-dynamic-import"]
+    "plugins": ["@babel/plugin-syntax-dynamic-import", "lodash"]
 }
