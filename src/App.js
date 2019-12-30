@@ -1,8 +1,14 @@
 import React, { PureComponent } from 'react';
+import { Provider } from 'react-redux';
+import { store } from 'configurations/redux/store';
 
 class App extends PureComponent {
   render() {
-    return <h1>Hello World from React boilerplate</h1>;
+    return (
+      <Provider store={store}>
+        <h1>Hello World from React boilerplate</h1>;
+      </Provider>
+    );
   }
 }
 
