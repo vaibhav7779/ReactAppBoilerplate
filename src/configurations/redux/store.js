@@ -3,11 +3,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import localForage from 'localforage';
+import Api from 'utils/Api';
 import combinedReducer from './reducers';
 
 const persistStorage = localForage;
-
 const isPresistanceRequired = false;
+const apiInstance = new Api();
 
 const persistConfig = {
   version: 0,
@@ -21,7 +22,7 @@ const persistedReducer = isPresistanceRequired
   : combinedReducer;
 
 const middlewares = [
-  thunk.withExtraArgument(), // Argument can be a request object used inside all calls
+  thunk.withExtraArgument({ apiInstance }), // Argument can be a request object used inside all calls
 ];
 
 const composeEnhancers =
