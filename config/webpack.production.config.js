@@ -54,7 +54,7 @@ module.exports = require('./webpack.base.config')({
   },
   // Emit a source map for easier debugging
   // See https://webpack.js.org/configuration/devtool/#devtool
-  devtool: 'cheap-module-source-map', // 'cheap-module-source-map',
+  devtool: 'hidden-source-map', // 'cheap-module-source-map',
   optimization: {
     minimize: true,
   },
