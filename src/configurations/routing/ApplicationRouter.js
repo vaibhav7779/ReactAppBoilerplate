@@ -51,18 +51,19 @@ const UnauthenticatedRoute = ({ children, ...rest }) => (
 const allappRoutes = getAllRoutesArray();
 
 const routes = allappRoutes.map((route, index) => {
+  const { component: Component } = route;
   return route.needAuth ? (
-    <AuthenticatedRoute
-      key={route.path}
-      path={route.path}
-      component={route.component}
-    />
+    <AuthenticatedRoute key={route.path} path={route.path} exact={route.exact}>
+      <Component />
+    </AuthenticatedRoute>
   ) : (
     <UnauthenticatedRoute
       key={route.path}
       path={route.path}
-      component={route.component}
-    />
+      exact={route.exact}
+    >
+      <Component />
+    </UnauthenticatedRoute>
   );
 });
 

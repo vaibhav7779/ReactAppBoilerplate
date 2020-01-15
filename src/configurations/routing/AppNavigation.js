@@ -7,11 +7,20 @@ const LoginContainer = React.lazy(() =>
 );
 
 const appRoutes = {
+  root: {
+    defaultRoute: {
+      path: '/',
+      component: LoginContainer,
+      needAuth: true,
+      exact: true,
+    },
+  },
   authentication: {
     login: {
       path: '/login',
       component: LoginContainer,
       needAuth: false,
+      exact: false,
     },
   },
 };
