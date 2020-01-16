@@ -40,7 +40,12 @@
     "FormData": true,
     "FileReader": true,
     "Blob": true,
-    "navigator": true
+    "navigator": true,
+    "global": true,
+    "describe": true,
+    "test": true,
+    "shallow": true,
+    "expect": true
   },
   "settings": {
     "import/resolver" : {
