@@ -1,9 +1,9 @@
 import React from 'react';
-import LoginContainer from './Login.Container';
+import NameContainer from './Name.Container';
 
 describe('login Comp', () => {
   test('verify name', () => {
-    const wrapper = shallow(<LoginContainer />);
+    const wrapper = shallow(<NameContainer />);
     const name = 'Gaurav';
     // console.log('props',wrapper.props());
     // console.log('children',wrapper.props().children[0].props);
