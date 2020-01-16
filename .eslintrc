@@ -42,10 +42,10 @@
     "Blob": true,
     "navigator": true,
     "global": true,
-    "describe": true,
-    "test": true,
-    "shallow": true,
-    "expect": true
+    "describe": "readonly",
+    "test": "readonly",
+    "shallow": "readonly",
+    "expect": "readonly"
   },
   "settings": {
     "import/resolver" : {
