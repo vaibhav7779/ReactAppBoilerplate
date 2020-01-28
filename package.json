@@ -6,13 +6,15 @@
   "scripts": {
     "analyze": "npm run build && source-map-explorer 'build/*.js'",
     "prebuild": "npm run build:clean",
-    "build": "npm run build:clean && cross-env NODE_ENV=production webpack --config config/webpack.production.config.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "build": "npm run build:clean && cross-env NODE_ENV=production BROWSERSLIST_ENV=production webpack --config config/webpack.production.config.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
-    "start": "cross-env NODE_ENV=development node server",
-    "start:prod": "cross-env NODE_ENV=production node server",
+    "start": "cross-env NODE_ENV=development BROWSERSLIST_ENV=development node server",
+    "start:prod": "cross-env NODE_ENV=production BROWSERSLIST_ENV=production node server",
     "start:production": "npm run build && npm run start:prod",
     "lint": "eslint src/ --fix",
-    "pretty": "pretty-quick --staged"
+    "pretty": "pretty-quick --staged",
+    "browser-list": "cross-env BROWSERSLIST_ENV=development npx browserslist",
+    "browser-list:prod": "cross-env BROWSERSLIST_ENV=production npx browserslist"
   },
   "lint-staged": {
     "*.{js,jsx}": [
