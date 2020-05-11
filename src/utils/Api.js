@@ -1,17 +1,13 @@
 import axios from 'axios';
 import defaultConfig from 'configurations/network/defaultConfig';
-import apiRoutes from 'configurations/network/apiRoutes';
 import SecureRequest from './SecureRequest';
 
 class Api {
   static SecureRequest = SecureRequest();
 
   constructor() {
-    const { baseURL } = apiRoutes;
-
     this.authData = null;
     this.requestManager = axios.create({
-      baseURL,
       ...defaultConfig,
     });
 
