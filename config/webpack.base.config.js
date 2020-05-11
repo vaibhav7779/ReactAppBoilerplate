@@ -452,6 +452,8 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
             // Pending further investigation:
             // https://github.com/terser-js/terser/issues/120
             inline: 2,
+            // Dropping of consoles in production mode
+            drop_console: true,
           },
           mangle: {
             safari10: true,
