@@ -11,6 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const VersionFile = require('webpack-version-file');
 // const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 const PostcssPresetEnv = require('postcss-preset-env');
@@ -401,6 +402,16 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
         return {
           files: manifestFiles,
         };
+      },
+    }),
+
+    new VersionFile({
+      output: path.join(paths.appBuild, '/version.json'),
+      package: paths.appPackageJson,
+      template: path.join(paths.appPath, '/version.ejs'),
+      data: {
+        buildAt: new Date().toISOString(),
+        environment: env.raw.NODE_ENV,
       },
     }),
     new LodashModuleReplacementPlugin({

@@ -42,7 +42,8 @@
     "redux-persist": "6.0.0",
     "redux-persist-transform-compress": "4.2.0",
     "redux-persist-transform-encrypt": "2.0.1",
-    "redux-thunk": "2.3.0"
+    "redux-thunk": "2.3.0",
+    "webpack-version-file": "^0.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
