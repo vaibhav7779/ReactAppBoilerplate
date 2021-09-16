@@ -112,7 +112,13 @@
   height: 1em;
   margin-left: 0.5rem;
 }
-
+.welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: start;
+  width: 100vh;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;

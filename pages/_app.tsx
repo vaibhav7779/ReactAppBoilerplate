@@ -1,7 +1,12 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { StylesProvider } from "@material-ui/core/styles";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <StylesProvider injectFirst>
+      <Component {...pageProps} />
+    </StylesProvider>
+  );
 }
 export default MyApp;
