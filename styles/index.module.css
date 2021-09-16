@@ -1,0 +1,53 @@
+.bodyContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.mainContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerContainer {
+  background-color: #ffffff;
+}
+
+.bannerContainer {
+  background-color: #ffffff;
+  padding: 1rem 0 1rem;
+}
+
+.bannerContainerButton {
+  margin-top: 2rem;
+}
+
+.textAlignC {
+  text-align: center;
+}
+
+.gutterBottom {
+  margin-bottom: 1rem;
+}
+
+.btnSecBorder {
+  border: 1px solid #e2e2e2;
+}
+
+.contentContainer {
+  padding: 2rem 0rem;
+}
+
+.footerContainer {
+  background-color: #ffffff;
+  padding: 1rem 0 1rem;
+  width: 100%;
+}
+
+.footerLogo {
+  display: flex;
+  justify-content: center;
+}
