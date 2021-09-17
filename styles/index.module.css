@@ -1,3 +1,90 @@
+/** Animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveBtnToUp {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes bannerLogoRotateandResize {
+  0% {
+    transform: rotate(90deg);
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: scale(2, 2);
+  }
+  30% {
+    transform: scale(1, 1);
+  }
+
+  40% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+
+  60% {
+    transform: scale(2, 2);
+  }
+  70% {
+    transform: scale(1, 1);
+  }
+
+  80% {
+    transform: rotate(90deg);
+  }
+  90% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: scale(-1, -1);
+  }
+}
+/** Animations End */
+
 .bodyContainer {
   min-height: 100vh;
   display: flex;
@@ -18,15 +105,45 @@
 
 .bannerContainer {
   background-color: #ffffff;
-  padding: 1rem 0 1rem;
+  padding: 4rem 0 4rem;
+}
+
+.bannerLogoContainer {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerLogo {
+  width: 100px;
+  height: 100px;
+  animation: bannerLogoRotateandResize 3s linear;
 }
 
 .bannerContainerButton {
   margin-top: 2rem;
+  animation: moveBtnToUp 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 
 .textAlignC {
   text-align: center;
+}
+
+.textHeaderFormat {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.textPrimaryAnimation {
+  animation: moveInLeft 1s ease-out;
+}
+
+.textSecondaryAnimations {
+  animation: moveInRight 1s ease-out;
 }
 
 .gutterBottom {
