@@ -33,7 +33,11 @@ const Home: NextPage = () => {
 
         {logoLoader ? (
           <Container maxWidth="sm" className={`${styles.bannerLogoContainer}`}>
-            <img src="/subZero.svg" className={`${styles.bannerLogo}`}></img>
+            <img
+              src="/subZero.svg"
+              className={`${styles.bannerLogo}`}
+              alt="subzero logo"
+            />
           </Container>
         ) : (
           <>
