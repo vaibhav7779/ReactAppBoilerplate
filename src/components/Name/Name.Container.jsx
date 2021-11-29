@@ -1,12 +1,12 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react'
 
 export default class NameContainer extends PureComponent {
-  render() {
+  render () {
     return (
-      <div className="name">
-        <span className="firstname">Gaurav</span>
-        <span className="lastname">Singh</span>
+      <div className='name'>
+        <span className='firstname'>Gaurav</span>
+        <span className='lastname'>Singh</span>
       </div>
-    );
+    )
   }
 }

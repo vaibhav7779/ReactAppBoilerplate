@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import LoginReducer from 'components/Login/Login.reducer';
+import { combineReducers } from 'redux'
+import LoginReducer from 'components/Login/Login.reducer'
 
 const allReducer = {
-  login: LoginReducer,
-};
+  login: LoginReducer
+}
 
-const combinedReducer = combineReducers(allReducer);
+const combinedReducer = combineReducers(allReducer)
 
-export default combinedReducer;
+export default combinedReducer

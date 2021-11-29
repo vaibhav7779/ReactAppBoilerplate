@@ -1,15 +1,15 @@
-import { LOGIN_INIT, LOGIN_SUCCESS, LOGIN_FAILURE } from './Login.constants';
+import { LOGIN_INIT, LOGIN_SUCCESS, LOGIN_FAILURE } from './Login.constants'
 
 const initLoginCreator = () => ({
-  type: LOGIN_INIT,
-});
+  type: LOGIN_INIT
+})
 
 const performLogin = ({ email, password }) => {
   return async (disptach, getState, { apiInstance }) => {
-    disptach(initLoginCreator());
-  };
-};
+    disptach(initLoginCreator())
+  }
+}
 
-const dummy = () => {};
+const dummy = () => {}
 
-export { performLogin, dummy };
+export { performLogin, dummy }

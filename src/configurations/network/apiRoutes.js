@@ -1,5 +1,5 @@
 const apiRoutes = {
-  authentication: {},
-};
+  authentication: {}
+}
 
-export default apiRoutes;
+export default apiRoutes
