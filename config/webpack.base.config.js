@@ -12,7 +12,6 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const VersionFile = require('webpack-version-file')
-// const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes')
 const PostcssPresetEnv = require('postcss-preset-env')
 const path = require('path')
