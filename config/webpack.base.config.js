@@ -47,7 +47,8 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
     chunkModules: true,
     modules: true,
     children: false,
-    env: true
+    env: true,
+    errorDetails: true
   },
   mode: options.mode,
   // Stop compilation early in production
@@ -68,16 +69,16 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
     rules: [
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(js|jsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            loader: require.resolve('eslint-loader')
-          }
-        ],
-        include: paths.appSrc
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       loader: require.resolve('eslint-loader')
+      //     }
+      //   ],
+      //   include: paths.appSrc
+      // },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -516,7 +517,7 @@ module.exports = (options = { optimization: { minimize: false } }) => ({
       })
     ],
     // namedModules: true,
-    moduleIds: 'hashed', // it's the vendor hash we want to fix. with local changes the vendor id won't change
+    moduleIds: 'deterministic', // it's the vendor hash we want to fix. with local changes the vendor id won't change
     splitChunks: {
       cacheGroups: {
         default: false,

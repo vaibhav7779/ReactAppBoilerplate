@@ -1,11 +1,11 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
-const appDirectory = fs.realpathSync(process.cwd());
+const appDirectory = fs.realpathSync(process.cwd())
 
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 const moduleFileExtensions = [
   'web.mjs',
@@ -18,21 +18,21 @@ const moduleFileExtensions = [
   'tsx',
   'json',
   'web.jsx',
-  'jsx',
-];
+  'jsx'
+]
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
   const extension = moduleFileExtensions.find(givenExtension =>
-    fs.existsSync(resolveFn(`${filePath}.${givenExtension}`)),
-  );
+    fs.existsSync(resolveFn(`${filePath}.${givenExtension}`))
+  )
 
   if (extension) {
-    return resolveFn(`${filePath}.${extension}`);
+    return resolveFn(`${filePath}.${extension}`)
   }
 
-  return resolveFn(`${filePath}.js`);
-};
+  return resolveFn(`${filePath}.js`)
+}
 
 // config after eject: we're in ./config/
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPath: resolveApp('.'),
   appNodeModules: resolveApp('node_modules'),
-  appPolyfillJs: resolveModule(resolveApp, 'src/polyfills'),
-};
+  appPolyfillJs: resolveModule(resolveApp, 'src/polyfills')
+}
 
-module.exports.moduleFileExtensions = moduleFileExtensions;
+module.exports.moduleFileExtensions = moduleFileExtensions
