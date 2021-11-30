@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import LoginWrapper from './Login.wrapper'
+import LoginWrapper from './Login.wrapper.tsx'
 import { performLogin } from './Login.actions'
 
 class LoginContainer extends PureComponent {

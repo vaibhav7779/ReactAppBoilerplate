@@ -9,7 +9,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "no-console": 1,
@@ -57,7 +57,7 @@
           ["components", "./src/components"],
           ["globals", "./src/globals"],
         ],
-        "extensions": [".js", ".jsx",  ".scss", ".react.js"],
+        "extensions": [".js", ".jsx",  ".scss", ".react.js", ".ts", ".tsx"]
       }
     }
   },
