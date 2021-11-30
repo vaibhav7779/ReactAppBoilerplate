@@ -1,8 +1,9 @@
 import * as React from "react";
 
-type WrapperProps = {
-  title: string,
+class LoginWrapper extends React.PureComponent {
+  render() {
+    return <div>Login tsx</div>;
+  }
 }
 
-const LoginWrapper = ({ title = "Login tsx"}: WrapperProps) => <div>{title}</div>
 export default LoginWrapper

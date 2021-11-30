@@ -33,6 +33,16 @@
     "import/no-extraneous-dependencies": [error, { "devDependencies": true }],
     "react/jsx-props-no-spreading": 0,
     "arrow-body-style": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
   },
   "globals": {
     "window": true,
