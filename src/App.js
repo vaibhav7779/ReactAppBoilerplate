@@ -1,16 +1,19 @@
-import React, { PureComponent } from 'react'
-import { Provider } from 'react-redux'
-import { store } from 'configurations/redux/store'
-import ApplicationRouter from 'configurations/routing/ApplicationRouter'
+import React, { PureComponent } from 'react';
+import { Provider } from 'react-redux';
+import { store } from 'configurations/redux/store';
+import ApplicationRouter from 'configurations/routing/ApplicationRouter';
+import { StylesProvider } from '@material-ui/core/styles';
 
 class App extends PureComponent {
-  render () {
+  render() {
     return (
       <Provider store={store}>
-        <ApplicationRouter />
+        <StylesProvider injectFirst>
+          <ApplicationRouter />
+        </StylesProvider>
       </Provider>
-    )
+    );
   }
 }
 
-export default App
+export default App;
